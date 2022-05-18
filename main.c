@@ -3,9 +3,27 @@
 
 float compoundingfunc(float inBalance, float percentage)
 {
-    float finBalance;
-    finBalance = ((inBalance * percentage) / 100.0) + inBalance;
+    float finBalance = ((inBalance * percentage) / 100.0) + inBalance;
     return finBalance;
+}
+
+float compoundTillTradeCount(float inBalance, float percentage)
+{
+    int tradeCount;
+    printf("\nTrade Count:\t");
+    scanf("%i", &tradeCount);
+    printf("\nInitial Amount %.2f\n", inBalance);
+    float b = compoundingfunc(inBalance, percentage);
+    for (int i = 1; i <= tradeCount; i++)
+    {
+        printf("\nTrade %i     %.2f", i, b);
+        b = compoundingfunc(b, percentage);
+    }
+}
+
+float compoundTillAmountfunc(float inBalance, float percentage, float amountToReach)
+{
+    float a = compoundingfunc(inBalance, percentage);
 }
 
 int main()
@@ -17,15 +35,8 @@ int main()
     scanf("%f", &initialBalance);
     printf("\nPlease enter Percentage:\t");
     scanf("%f", &averagePercentage);
-    printf("\nTrade Count:\t");
-    scanf("%i", &tradeCount);
 
-    float b = compoundingfunc(initialBalance, averagePercentage);
+    compoundTillTradeCount(initialBalance,averagePercentage);
 
-    for (int i = 0; i < tradeCount; i++)
-    {
-        printf("Trade %i\t%.2f\n", i, b);
-        b = compoundingfunc(b, averagePercentage);
-    }
     return 0;
 }
