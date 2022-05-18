@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
 float compoundingfunc(float inBalance, float percentage)
 {
@@ -21,9 +22,27 @@ float compoundTillTradeCount(float inBalance, float percentage)
     }
 }
 
-float compoundTillAmountfunc(float inBalance, float percentage, float amountToReach)
+float compoundTillAmountfunc(float inBalance, float percentage)
 {
-    float a = compoundingfunc(inBalance, percentage);
+    float amountToReach;
+    printf("\nAmount to reach:   ");
+    scanf("%f", &amountToReach);
+    bool i = true;
+    int count = 1;
+    while (i == true)
+    {
+        float a = compoundingfunc(inBalance, percentage);
+        if (a > amountToReach)
+        {
+            printf("\nTrade count needed to reach required Amount:  %i", count);
+            i = false;
+        }
+        else
+        {
+            i = true;
+        }
+        count++;
+    }
 }
 
 int main()
@@ -36,7 +55,7 @@ int main()
     printf("\nPlease enter Percentage:\t");
     scanf("%f", &averagePercentage);
 
-    compoundTillTradeCount(initialBalance,averagePercentage);
+    compoundTillAmountfunc(initialBalance, averagePercentage);
 
     return 0;
 }
