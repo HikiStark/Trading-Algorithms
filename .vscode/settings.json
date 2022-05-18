@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+        "compoundingfunc"
+    ],
+    "editor.semanticTokenColorCustomizations": {
+        "rules": {
+            "*.deprecated": {
+                "foreground": "#808080",
+                "italic": true
+            }
+        }
+    }
+}
