@@ -58,29 +58,35 @@ int main()
 
     printf("Please select the Mode:\n1 for Calculation of Compounding until given amounts of Trades.\n2 for Calculation of the Compounding Trade count until the Amount reached.\n");
     selectionOfMode = getchar();
-
-    switch (selectionOfMode)
+    while (selectionOfMode != 0)
     {
-    case '1':
-        printf("\nMode 1\n");
-        printf("\nPlease enter initial Balance:\t");
-        scanf("%f", &initialBalance);
-        printf("\nPlease enter Percentage:\t");
-        scanf("%f", &averagePercentage);
-        compoundTillTradeCount(initialBalance, averagePercentage);
-        break;
-    case '2':
-        printf("\nMode 2\n");
-        printf("\nPlease enter initial Balance:\t");
-        scanf("%f", &initialBalance);
-        printf("\nPlease enter Percentage:\t");
-        scanf("%f", &averagePercentage);
-        compoundTillAmountfunc(initialBalance, averagePercentage);
-        break;
-    default:
-        break;
+        system("@cls||clear");
+        printf("Please select the Mode:\n1 for Calculation of Compounding until given amounts of Trades.\n2 for Calculation of the Compounding Trade count until the Amount reached.\n");
+        selectionOfMode = getchar();
+        switch (selectionOfMode)
+        {
+        case '1':
+            printf("Mode 1\n");
+            printf("\nPlease enter initial Balance:\t");
+            scanf("%f", &initialBalance);
+            printf("\nPlease enter Percentage:\t");
+            scanf("%f", &averagePercentage);
+            compoundTillTradeCount(initialBalance, averagePercentage);
+            break;
+        case '2':
+            printf("Mode 2\n");
+            printf("\nPlease enter initial Balance:\t");
+            scanf("%f", &initialBalance);
+            printf("\nPlease enter Percentage:\t");
+            scanf("%f", &averagePercentage);
+            compoundTillAmountfunc(initialBalance, averagePercentage);
+            break;
+        default:
+            break;
+        }
+        printf("\n");
+        system("pause");
     }
-    system("pause");
 
     return 0;
 }
