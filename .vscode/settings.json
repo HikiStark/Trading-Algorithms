@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "Amountfunc",
         "compoundingfunc"
     ],
     "editor.semanticTokenColorCustomizations": {
@@ -9,5 +10,8 @@
                 "italic": true
             }
         }
+    },
+    "files.associations": {
+        "stdlib.h": "c"
     }
 }

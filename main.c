@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 float compoundingfunc(float inBalance, float percentage)
 {
@@ -29,9 +30,12 @@ float compoundTillAmountfunc(float inBalance, float percentage)
     scanf("%f", &amountToReach);
     bool i = true;
     int count = 1;
+    float a, b, c;
     while (i == true)
     {
-        float a = compoundingfunc(inBalance, percentage);
+        inBalance = compoundingfunc(inBalance, percentage);
+        a = compoundingfunc(inBalance, percentage);
+
         if (a > amountToReach)
         {
             printf("\nTrade count needed to reach required Amount:  %i", count);
@@ -47,15 +51,35 @@ float compoundTillAmountfunc(float inBalance, float percentage)
 
 int main()
 {
-    float averagePercentage, initialBalance;
+    system("@cls||clear");
     int tradeCount;
+    char selectionOfMode;
+    float averagePercentage, initialBalance;
 
-    printf("\nPlease enter initial Balance:\t");
-    scanf("%f", &initialBalance);
-    printf("\nPlease enter Percentage:\t");
-    scanf("%f", &averagePercentage);
+    printf("Please select the Mode:\n1 for Calculation of Compounding until given amounts of Trades.\n2 for Calculation of the Compounding Trade count until the Amount reached.\n");
+    selectionOfMode = getchar();
 
-    compoundTillAmountfunc(initialBalance, averagePercentage);
+    switch (selectionOfMode)
+    {
+    case '1':
+        printf("\nMode 1\n");
+        printf("\nPlease enter initial Balance:\t");
+        scanf("%f", &initialBalance);
+        printf("\nPlease enter Percentage:\t");
+        scanf("%f", &averagePercentage);
+        compoundTillTradeCount(initialBalance, averagePercentage);
+        break;
+    case '2':
+        printf("\nMode 2\n");
+        printf("\nPlease enter initial Balance:\t");
+        scanf("%f", &initialBalance);
+        printf("\nPlease enter Percentage:\t");
+        scanf("%f", &averagePercentage);
+        compoundTillAmountfunc(initialBalance, averagePercentage);
+        break;
+    default:
+        break;
+    }
 
     return 0;
 }
